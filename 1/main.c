@@ -10,10 +10,6 @@ int main()
     printf("Confines: ");
     scan(s_inp);
     s_len = length(s_inp);
-    //if(s_inp[0] == '-')
-    //    putchar('-');
     reverse(s_inp, s_len);
-    //if(s_inp[s_len -1] == '-')
-    //    putchar('-');  
     return 0;
 }

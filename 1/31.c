@@ -56,11 +56,12 @@ void reverse(char s[], int len)
         }
     ii = i;
     }
+    if((s[ii + 1] == '-') && ((s[ii + 2] == '-') || (s[ii + 2] == '\0'))) // проверка предпоследеней -, кроме 1 и последней
+    {
+        putchar(s[ii + 1]);
+    }
     if(s[0] == '-') // последне -
         putchar(s[ii + 2]);
-
-
-
 }
 
 void scan(char x[])

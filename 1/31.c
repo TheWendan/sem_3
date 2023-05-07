@@ -13,7 +13,9 @@ int length(char s[]) //длина строки
 
 void reverse(char s[], int len)
 {
-    unsigned int code1, code2; short ii = 0;
+    unsigned int code1, code2; short ii = 0; unsigned flag = 0;
+    if(s[0] == '-') // первое -
+        putchar(s[0]);
     for(int i = 0;i <= len - 3;i++) // len - 3, т.к. длина меньше на 1 + случай, если всего 3 символа (чтобы не считывались пустые)
     {
         if((s[i] != '-') && (s[i+1] == '-') && (s[i+2] != '-'))
@@ -22,24 +24,41 @@ void reverse(char s[], int len)
             code2 = s[i+2]; //второго
             if(code1 > code2)
             {
-                for(int i = 0;i <= abs(code1 - code2);i++)  
-                    printf("%c", code1 - i);
+                if(flag == 0)
+                {
+                    for(int i = 0;i <= abs(code1 - code2);i++)  
+                        printf("%c", code1 - i);
+                }
+                else
+                {
+                    for(int i = 1;i <= abs(code1 - code2);i++)  
+                        printf("%c", code1 - i);
+                }
             }
             else
             {
-                for(int i = 0;i <= abs(code1 - code2);i++)  
-                    printf("%c", code1 + i);
+                if(flag == 0)
+                {
+                    for(int i = 0;i <= abs(code1 - code2);i++)  
+                        printf("%c", code1 + i);
+                }
+                else
+                {
+                    for(int i = 1;i <= abs(code1 - code2);i++)  
+                        printf("%c", code1 + i);
+                }
             }
+            flag = 1; // уже напечтали первую часть
         }
-        if(s[i] == '-')
+        if((s[i] == '-') && ((s[i + 1] == '-') || (s[i + 1] == '\0'))) // проверка -, кроме 1 и последней
         {
             putchar(s[i]);
         }
     ii = i;
     }
-    if(s[0] == '-')
-        if(s[ii + 1] == '-') // проверка последнего символа, т.к. i <= len - 3
-            putchar(s[ii + 1]);
+    if(s[0] == '-') // последне -
+        putchar(s[ii + 2]);
+
 
 
 }

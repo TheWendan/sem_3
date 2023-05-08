@@ -1,0 +1,2 @@
+ggc main.c 31.c 
+./a
